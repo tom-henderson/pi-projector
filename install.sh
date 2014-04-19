@@ -16,4 +16,4 @@ chmod +x /root/play-slide
 chmod +x /root/startup-slide
 
 # Cron file for scheduling images
-mv ./pi-projector.cron /etc/cron.d/
+mv pi-projector.cron /etc/cron.d/
