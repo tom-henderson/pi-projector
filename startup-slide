@@ -1,0 +1,12 @@
+#!/bin/bash
+
+TIME=`date +"%H"`
+DAY=`date +"%w"`
+
+# Use 10# before variable to force base-10 interpretation
+# otherwise if time has leading zero we get an error
+# http://stackoverflow.com/questions/21049822/bash-error-value-too-great-for-base-error-token-is-09
+
+SLIDE="black.gif"
+
+/home/pi/menus/play-slide /home/pi/menus/$SLIDE

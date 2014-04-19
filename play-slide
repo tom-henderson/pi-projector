@@ -1,0 +1,3 @@
+#!/bin/bash
+killall fbi
+/usr/bin/fbi -noverbose -a -T 1 $1

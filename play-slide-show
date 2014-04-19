@@ -1,0 +1,18 @@
+#!/bin/bash
+
+function usage() {
+	echo "Usage: play-slide-show directory [interval]"
+	exit 1
+}
+
+slides=($1)
+[ -z ${slides} ] && (
+	echo "Must specify a source directory"
+	exit 1
+)
+
+interval=$2
+[ -z ${interval} ] && interval=60
+
+killall fbi
+/usr/bin/fbi -noverbose -a -T 1 -t ${interval} --readahead "${slides[@]}"
