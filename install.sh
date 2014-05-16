@@ -11,7 +11,7 @@ pacman -S fbida ttf-inconsolata
 ln -sf /usr/share/zoneinfo/Pacific/Auckland /etc/localtime 
 echo "Pacific/Auckland" > /etc/timezone
 
-# Utility scripts for playing a slide and a folder of slides:
+# Utility scripts for playing a slide or series of slides:
 chmod +x /root/play-slide
 chmod +x /root/startup-slide
 

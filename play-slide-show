@@ -1,18 +1,13 @@
 #!/bin/bash
 
-function usage() {
-	echo "Usage: play-slide-show directory [interval]"
-	exit 1
-}
+if [ $# -lt 3 ]
+then
+	echo "Must specify an interval and at least two slides:"
+	echo "Usage: $0 interval slide slide [slide...]"
+fi
 
-slides=($1)
-[ -z ${slides} ] && (
-	echo "Must specify a source directory"
-	exit 1
-)
-
-interval=$2
-[ -z ${interval} ] && interval=60
+interval=$1
+slides=(${@:2:$#})
 
 killall fbi
 /usr/bin/fbi -noverbose -a -T 1 -t ${interval} --readahead "${slides[@]}"
