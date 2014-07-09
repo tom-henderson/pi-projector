@@ -1,4 +1,6 @@
-*.pyc
+*.py[c]
 *.DS_Store
 *.sublime-workspace
 *.sublime-project
+
+imperial.py

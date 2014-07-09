@@ -2,8 +2,6 @@
 
 import os
 
-WORKING_DIRECTORY = "/home/pi/menus/slides/slideshows/"
-
 class SlideShow(object):
 	def __init__(self, working_dir=None, name=None):
 		if name is None:
