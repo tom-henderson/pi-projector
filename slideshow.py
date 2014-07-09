@@ -13,12 +13,16 @@ class SlideShow(object):
 		if not os.path.exists(working_dir):
 			raise Exception("Working directory {} does not exist.".format(working_dir))
 		self.working_dir = working_dir
-		
+
+		self.path = os.path.join(self.working_dir, self.name)
 		self._slides = []
 
 	def add_slide(self, file=None, duration=None):
 		if file is None or duration is None:
 			raise Exception("Must enter file path and duration in multiples of 30s for each slide.")
+
+		if not os.path.exists(file):
+			raise Exception("File {} doesn't exist.".format(file))
 
 		self._slides.append({
 			"file": file,
@@ -26,27 +30,42 @@ class SlideShow(object):
 		})
 
 	def build_slideshow(self):
-		_path = os.path.join(self.working_dir, self.name)
-		
-		if not os.path.exists(_path):
-			os.makedirs(_path)
+		if not os.path.exists(self.path):
+			os.makedirs(self.path)
 		else:
-			# delete all symlinks from _path
+			# Delete all contents:
+			for file in os.listdir(self.path):
+				path = os.path.join(self.path, file)
+				os.unlink(path)
 
 		for n, slide in enumerate(self._slides):
-			# create a symlink for each slide in _path for each 30 second period, like:
-			# /1-1-file1.gif
-			# /1-2-file1.gif
-			# /2-1-file2.gif
+			# create a symlink for each slide in self.path for each 30 second period, like:
 			for i in range(slide["duration"]):
 				os.symlink(
 					slide["file"], 
 					os.path.join(
-						_path,
+						self.path,
 						"{}-{}-{}".format(
 							n,
 							i,
 							os.path.split(slide["file"])[1]
 						)
 					)
-				)	
+				)
+
+	def delete_slideshow(self):
+		if os.path.exists(self.path):
+			for file in os.listdir(self.path):
+				path = os.path.join(self.path, file)
+				os.unlink(path)
+			os.rmdir(self.path)
+
+
+# Example usage:
+# ss = SlideShow(working_dir="/Users/tom/Desktop/Slideshows", name="Test")
+# ss.add_slide("/Users/tom/Desktop/Slides/black.gif", 1)
+# ss.add_slide("/Users/tom/Desktop/Slides/white.gif", 2)
+# ss.add_slide("/Users/tom/Desktop/Slides/black.gif", 1)
+# ss.add_slide("/Users/tom/Desktop/Slides/white.gif", 3)
+# ss.build_slideshow() # Initial build
+# ss.build_slideshow() # Can we rebuild?
