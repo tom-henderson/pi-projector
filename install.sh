@@ -5,7 +5,7 @@
 
 # update and install requred packages
 pacman -Syy
-pacman -S fbida ttf-inconsolata
+pacman -S fbida ttf-inconsolata python
 
 # Set timezone
 ln -sf /usr/share/zoneinfo/Pacific/Auckland /etc/localtime 
