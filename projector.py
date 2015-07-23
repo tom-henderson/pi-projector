@@ -7,6 +7,9 @@ class SlideShow(object):
             raise Exception("Slideshow must be named.")
         self.name = name
 
+        if not working_dir:
+            working_dir = "/opt/projector/slideshows"
+
         if not os.path.exists(working_dir):
             raise Exception(
                 "Working directory {} does not exist.".format(working_dir)

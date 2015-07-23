@@ -1,13 +1,5 @@
 #!/bin/bash
 
-if [ $# -lt 3 ]
-then
-	echo "Must specify an interval and at least two slides:"
-	echo "Usage: $0 interval slide slide [slide...]"
-fi
+/usr/bin/killall fbi
 
-interval=$1
-slides=(${@:2:$#})
-
-killall fbi
-/usr/bin/fbi -noverbose -a -T 1 -t ${interval} --readahead "${slides[@]}"
+/usr/bin/fbi -noverbose -a -T 1 -t 15 --readahead /opt/projector/slideshows/$1/*
