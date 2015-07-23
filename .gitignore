@@ -2,5 +2,5 @@
 *.DS_Store
 *.sublime-workspace
 *.sublime-project
-
-imperial.py
+__pycache__
+slideshows/*

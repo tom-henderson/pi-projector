@@ -1,0 +1,5 @@
+#!/usr/bin/python
+
+from projector import SlideShow
+
+# Create your slideshows here:

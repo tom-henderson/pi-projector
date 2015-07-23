@@ -1,4 +1,0 @@
-# The pi won't be ready when @reboot triggers, so wait before we start
-@reboot			root sleep 15 && /root/startup-slide
-#*/2 * * * *	root /root/play-slide /root/slides/default/black.gif
-#1-59/2 * * * *	root /root/play-slide /root/slides/default/white.gif

@@ -1,5 +1,3 @@
-#!/bin/python
-
 import os
 
 
@@ -44,7 +42,7 @@ class SlideShow(object):
             # for each 30 second period
             for i in range(slide["duration"]):
                 os.symlink(
-                    slide["file"], 
+                    slide["file"],
                     os.path.join(
                         self.path,
                         "{}-{}-{}".format(
@@ -61,13 +59,3 @@ class SlideShow(object):
                 path = os.path.join(self.path, file)
                 os.unlink(path)
                 os.rmdir(self.path)
-
-
-# Example usage:
-# ss = SlideShow(working_dir="/Users/tom/Desktop/Slideshows", name="Test")
-# ss.add_slide("/Users/tom/Desktop/Slides/black.gif", 1)
-# ss.add_slide("/Users/tom/Desktop/Slides/white.gif", 2)
-# ss.add_slide("/Users/tom/Desktop/Slides/black.gif", 1)
-# ss.add_slide("/Users/tom/Desktop/Slides/white.gif", 3)
-# ss.build_slideshow() # Initial build
-# ss.build_slideshow() # Can we rebuild?

@@ -11,9 +11,5 @@ pacman -S fbida ttf-inconsolata python
 ln -sf /usr/share/zoneinfo/Pacific/Auckland /etc/localtime 
 echo "Pacific/Auckland" > /etc/timezone
 
-# Utility scripts for playing a slide or series of slides:
-chmod +x /root/play-slide
-chmod +x /root/startup-slide
-
 # Cron file for scheduling images
-mv pi-projector.cron /etc/cron.d/
+cp etc/cron.d/projector /etc/cron.d/projector
