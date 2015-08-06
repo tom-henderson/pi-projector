@@ -1,2 +1,2 @@
 # The pi won't be ready when @reboot triggers, so wait before we start
-@reboot			root sleep 15 && /root/startup-slide
+@reboot			root sleep 15 && /root/startup-slide.py
